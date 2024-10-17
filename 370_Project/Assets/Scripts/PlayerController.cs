@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
 
+    private PlayerHealth playerHealth; 
 
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -82,6 +84,12 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+
+    public void TakeDamage(int damage)
+    {
+        playerHealth.TakeDamage(damage);
     }
 
 }
