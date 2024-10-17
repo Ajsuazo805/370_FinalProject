@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8237722316728894595}
   - component: {fileID: 8597529360089976456}
   - component: {fileID: 6787982014713564660}
-  - component: {fileID: 8440703836298752153}
+  - component: {fileID: -1843333701325659353}
   m_Layer: 0
   m_Name: Wisp
   m_TagString: Untagged
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8440703836298752153
+--- !u!114 &-1843333701325659353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
