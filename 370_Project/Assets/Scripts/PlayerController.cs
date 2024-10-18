@@ -24,11 +24,17 @@ public class PlayerController : MonoBehaviour
     //jump force added when the player presses space
     public float jumpForce = 8f;
 
+    //players rigidbody
+    private Rigidbody rigidBody;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //set the startPos
+        startPos = transform.position;
+        //Set the reference to the players attached rigidbody
+        rigidBody = GetComponent<Rigidbody>();
 
     }
 
@@ -52,28 +58,30 @@ public class PlayerController : MonoBehaviour
         //check to see if player  has 0 lives
         if (lives == 0)
         {
-            SceneManager.LoadScene(1);
+            //NOTE: PUT GAME OVER SCENE HERE
+            //SceneManager.LoadScene(1);
         }
 
     }
 
     private void Move()
     {
+        //player moves forward
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += Vector3.forward * speed * Time.deltaTime;
         }
-        //Left and Right Movement
+        ////player moves left
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Move the player Left");
-            // Translate the player left by speed using Time.deltaTime.
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
+        //player moves backwards
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.back * speed * Time.deltaTime;
         }
+        //player moves right
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
@@ -87,13 +95,12 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
 
-            //if the raycast returns true then an object has been hit and the player is touching the floor
-            //For RayCast(startPosition,RayDirection, output the object hit, maximumDistanceForTheRayCastToFire)
+            //raycast to detect if we are grounded
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
             {
                 Debug.Log("Touching the ground");
-                //adds velocity to the player object causing the player to jump up
-                //rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                //adds velocity to the player object causing the player to jump upwards
+                rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             else
             {
@@ -110,7 +117,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //if we collide with a portal trigger, reset the start position
-        // and teleport the player to the next area
+        //and teleport the player to the next area
         if (other.gameObject.tag == "Portal")
         {
             //reset the startPos to the spawnPoint location
