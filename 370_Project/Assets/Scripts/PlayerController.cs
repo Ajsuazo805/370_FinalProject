@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     //players rigidbody
     private Rigidbody rigidBody;
 
+    PlayerHealth playerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
         startPos = transform.position;
         //Set the reference to the players attached rigidbody
         rigidBody = GetComponent<Rigidbody>();
+        //controls health and ui health 
+        playerHealth = GetComponent<PlayerHealth>();
 
     }
 
@@ -125,5 +128,13 @@ public class PlayerController : MonoBehaviour
             //teleport the player to the new startPos
             transform.position = startPos;
         }
+    }
+    /// <summary>
+    /// controls damage done in playerhealth script 
+    /// </summary>
+    /// <param name="damage"></param>
+    public void TakeDamage(int damage)
+    {
+        playerHealth.TakeDamage(damage);
     }
 }
