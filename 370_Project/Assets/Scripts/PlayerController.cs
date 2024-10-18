@@ -24,16 +24,12 @@ public class PlayerController : MonoBehaviour
     //jump force added when the player presses space
     public float jumpForce = 8f;
 
-    private Rigidbody rigidbody;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //set the startPos
-        startPos = transform.position;
-        //Set the reference to the players attached rigidbody
-        rigidbody = GetComponent<Rigidbody>();  
+
     }
 
 
@@ -97,7 +93,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Touching the ground");
                 //adds velocity to the player object causing the player to jump up
-                rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                //rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             else
             {
