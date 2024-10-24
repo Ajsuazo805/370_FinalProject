@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7489205851719279988}
   - component: {fileID: 184415629697966968}
   - component: {fileID: 6689478523077261613}
-  - component: {fileID: 1872317988873372896}
+  - component: {fileID: 2322277294680678246}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Untagged
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1872317988873372896
+--- !u!114 &2322277294680678246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,6 +117,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7910053026958839883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2dfb42ebdf73043acf80300658bba9, type: 3}
+  m_Script: {fileID: 11500000, guid: df671656f01cfce4294419d8187952dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  followDistance: 3
+  followSpeed: 1

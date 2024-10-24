@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     PlayerHealth playerHealth;
 
+    public Transform cameraTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,6 @@ public class PlayerController : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
 
     }
-
 
     // Update is called once per frame
     void Update()
@@ -69,25 +70,33 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        Vector3 forward = cameraTransform.forward;
+        forward.y = 0;
+        forward.Normalize();
+
+        Vector3 right = cameraTransform.right;
+        right.y = 0;
+        right.Normalize();
+
         //player moves forward
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            transform.position += forward * speed * Time.deltaTime;
         }
         ////player moves left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position -= right * speed * Time.deltaTime;
         }
         //player moves backwards
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            transform.position -= forward * speed * Time.deltaTime;
         }
         //player moves right
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += right * speed * Time.deltaTime;
         }
     }
 
