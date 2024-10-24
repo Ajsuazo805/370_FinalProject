@@ -137,6 +137,11 @@ public class PlayerController : MonoBehaviour
             //teleport the player to the new startPos
             transform.position = startPos;
         }
+        if (other.gameObject.tag == "Mana")
+        {
+            Destroy(other.gameObject);
+            // OnTriggerEnter
+        }
     }
     /// <summary>
     /// controls damage done in playerhealth script 
