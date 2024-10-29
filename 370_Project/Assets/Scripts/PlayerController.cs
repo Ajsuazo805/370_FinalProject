@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public GameObject laserPrefab;
 
     public float laserSpawnRate = 2f;
-    public float laserDelay = 2f;
+    public float laserDelay = 0f;
 
     public int manaAmount = 1;
 
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform respawnPoint;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //current health
         currentLives = lives;
@@ -55,9 +55,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         //controls health and ui health 
         // playerHealth = GetComponent<PlayerHealth>();
-        InvokeRepeating("Attack", laserDelay, laserSpawnRate);
-
-
+        InvokeRepeating("LaserSpawner", laserDelay, laserSpawnRate);
     }
 
     // Update is called once per frame
@@ -65,8 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         HandleJumping();
-        Attack();
-        
+        LaserSpawn();
     }
 
 
@@ -90,11 +87,11 @@ public class PlayerController : MonoBehaviour
 
         //UpdateHealthDisplay();
     }
-    private void Attack()
+    public  void LaserSpawn()
     {
         if (Input.GetKey(KeyCode.E))
         {
-            Instantiate(laserPrefab, transform.position, cameraTransform.rotation);
+            Instantiate(laserPrefab, GetComponent<Transform>().transform.position, cameraTransform.rotation);
         }
     }
 
