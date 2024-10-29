@@ -54,9 +54,9 @@ public class PlayerController : MonoBehaviour
         //Set the reference to the players attached rigidbody
         rigidBody = GetComponent<Rigidbody>();
         //controls health and ui health 
-       // playerHealth = GetComponent<PlayerHealth>();
+        // playerHealth = GetComponent<PlayerHealth>();
+        InvokeRepeating("Attack", laserDelay, laserSpawnRate);
 
-        //InvokeRepeating("Attack", laserDelay, laserSpawnRate);
 
     }
 
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         Move();
         HandleJumping();
         Attack();
+        
     }
 
 
