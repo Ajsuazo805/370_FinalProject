@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
 
     public Transform cameraTransform;
 
+    public GameObject laserPrefab;
+
+    public float laserSpawnRate = 2f;
+    public float laserDelay = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +46,8 @@ public class PlayerController : MonoBehaviour
         //controls health and ui health 
         playerHealth = GetComponent<PlayerHealth>();
 
+        //InvokeRepeating("Attack", laserDelay, laserSpawnRate);
+
     }
 
     // Update is called once per frame
@@ -48,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         HandleJumping();
+        Attack();
     }
 
 
@@ -66,6 +74,13 @@ public class PlayerController : MonoBehaviour
             //SceneManager.LoadScene(1);
         }
 
+    }
+    private void Attack()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            Instantiate(laserPrefab, transform.position, cameraTransform.rotation);
+        }
     }
 
     private void Move()

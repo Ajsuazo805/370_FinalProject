@@ -155,6 +155,10 @@ MonoBehaviour:
   speed: 10
   jumpForce: 8
   cameraTransform: {fileID: 5079212499888210325}
+  laserPrefab: {fileID: 151938665275495164, guid: 26a817b6c701b644e82ba37a1a0447d7,
+    type: 3}
+  laserSpawnRate: 2
+  laserDelay: 2
 --- !u!1 &2035898390090218644
 GameObject:
   m_ObjectHideFlags: 3
