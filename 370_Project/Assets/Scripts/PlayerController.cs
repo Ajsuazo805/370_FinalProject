@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public int damage = 1;
 
     public int currentLives ;
+
+    public Transform respawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,8 +77,8 @@ public class PlayerController : MonoBehaviour
         lives--;
         Debug.Log("Player took damage");
         //bring the player back to startPos
-        transform.position = startPos;
-
+       transform.position = respawnPoint.position;
+        Debug.Log("Player respawned");
         //check to see if player  has 0 lives
         if (lives <= 0)
         {
@@ -181,6 +183,7 @@ public class PlayerController : MonoBehaviour
         {
           //  lives--;
             Respawn();
+            
         }
     }
     /// <summary>
