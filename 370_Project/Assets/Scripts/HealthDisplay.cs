@@ -6,7 +6,8 @@ using TMPro;
 
 public class HealthDisplay : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerController playerController;
+    //public PlayerHealth playerHealth;
     public TMP_Text healthText;
     public TMP_Text manaText;
     public PlayerMana playerMana;
@@ -14,9 +15,11 @@ public class HealthDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerHealth != null)
+        if (healthText != null)
         {
-            healthText.text = "Health : " + playerHealth.GetHealth();
+            //healthText.text = "Health : " + playerHealth.GetHealth();
+            healthText.text = "Health : " + playerController.lives.ToString();
+
         }
 
         if (manaText != null)

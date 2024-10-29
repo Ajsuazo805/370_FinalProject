@@ -31,20 +31,28 @@ public class PlayerController : MonoBehaviour
 
     public Transform cameraTransform;
 
+
     public GameObject laserPrefab;
 
     public float laserSpawnRate = 2f;
     public float laserDelay = 2f;
 
+    public int manaAmount = 1;
+
+    public int damage = 1;
+
+    public int currentLives ;
     // Start is called before the first frame update
     void Start()
     {
+        //current health
+        currentLives = lives;
         //set the startPos
         startPos = transform.position;
         //Set the reference to the players attached rigidbody
         rigidBody = GetComponent<Rigidbody>();
         //controls health and ui health 
-        playerHealth = GetComponent<PlayerHealth>();
+       // playerHealth = GetComponent<PlayerHealth>();
 
         //InvokeRepeating("Attack", laserDelay, laserSpawnRate);
 
@@ -65,15 +73,19 @@ public class PlayerController : MonoBehaviour
     private void Respawn()
     {
         lives--;
+        Debug.Log("Player took damage");
         //bring the player back to startPos
         transform.position = startPos;
+
         //check to see if player  has 0 lives
-        if (lives == 0)
+        if (lives <= 0)
         {
+            Debug.Log("Player is Dead");
             //NOTE: PUT GAME OVER SCENE HERE
             //SceneManager.LoadScene(1);
         }
 
+        //UpdateHealthDisplay();
     }
     private void Attack()
     {
@@ -154,16 +166,35 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Mana")
         {
+            PlayerMana playerMana = other.GetComponent<PlayerMana>();
+            if (playerMana != null)
+            {
+                playerMana.AddMana(manaAmount);
+             
+            }
+            Debug.Log("Mana collected");
             Destroy(other.gameObject);
             // OnTriggerEnter
+        }
+
+        if(other.gameObject.tag == "Death")
+        {
+          //  lives--;
+            Respawn();
         }
     }
     /// <summary>
     /// controls damage done in playerhealth script 
     /// </summary>
     /// <param name="damage"></param>
-    public void TakeDamage(int damage)
+ //   public void TakeDamage()
+   // {
+       // lives -= damage;
+   //     Respawn();
+
+  //  }
+    public int returnHealth()
     {
-        playerHealth.TakeDamage(damage);
+        return currentLives;
     }
 }
