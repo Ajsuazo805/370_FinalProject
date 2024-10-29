@@ -8,6 +8,8 @@ TagManager:
   - Mana
   - Portal
   - Death
+  - Enemy
+  - Girl
   layers:
   - Default
   - TransparentFX

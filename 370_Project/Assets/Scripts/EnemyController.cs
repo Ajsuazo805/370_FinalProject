@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Enemy collision");
+        }
+        if (collision.gameObject.tag == "Girl")
+        {
+            Debug.Log("Enemy collision");
+        }
     }
 }
