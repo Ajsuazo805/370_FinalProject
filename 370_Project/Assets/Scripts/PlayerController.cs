@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     public float teleportDistance = 2f;
 
+    public bool canTeleport = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void Teleport()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && canTeleport)
         {
             startPos = transform.position;
             Vector3 forwardDirection = cameraTransform.forward;
