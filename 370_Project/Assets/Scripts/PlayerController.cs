@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     private float lastSpawner = 0f;
     private float spawnDelay = 3f;
 
+    public float teleportDistance = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         HandleJumping();
+        Teleport();
         LaserSpawner();
     }
 
@@ -148,6 +151,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void Teleport()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            startPos = transform.position;
+            Vector3 forwardDirection = cameraTransform.forward;
+
+            Vector3 newPos = startPos + forwardDirection * teleportDistance;
+
+            transform.position = newPos;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //if we collide with an enemy trigger, respawn
@@ -182,6 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             Respawn();  
         }
+        
     }
     /// <summary>
     /// controls damage done in playerhealth script 
