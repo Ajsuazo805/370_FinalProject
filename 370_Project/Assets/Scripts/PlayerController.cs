@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         lives--;
         Debug.Log("Player took damage");
         //bring the player back to startPos
-       transform.position = respawnPoint.position;
+        transform.position = respawnPoint.position;
         Debug.Log("Player respawned");
         //check to see if player  has 0 lives
         if (lives <= 0)
@@ -180,9 +180,7 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.tag == "Death")
         {
-          //  lives--;
-            Respawn();
-            
+            Respawn();  
         }
     }
     /// <summary>
