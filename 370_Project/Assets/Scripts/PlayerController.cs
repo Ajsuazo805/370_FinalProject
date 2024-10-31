@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -91,8 +90,8 @@ public class PlayerController : MonoBehaviour
         if (lives <= 0)
         {
             Debug.Log("Player is Dead");
-            //NOTE: PUT GAME OVER SCENE HERE
-            //SceneManager.LoadScene(1);
+            
+            SceneManager.LoadScene(3);
         }
 
         //UpdateHealthDisplay();
