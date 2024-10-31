@@ -10,6 +10,8 @@ TagManager:
   - Death
   - Enemy
   - Girl
+  - Door
+  - Echoes
   layers:
   - Default
   - TransparentFX

@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
     private float lastSpawner = 0f;
     private float spawnDelay = 3f;
 
+    public int echoes = 0;
+
+    public int playerMana;
+
 
     //WILL USE NEXT SPRINT
     //public float teleportDistance = 2f;
@@ -169,6 +173,16 @@ public class PlayerController : MonoBehaviour
         }
     }*/
 
+    /// <summary>
+    /// handles mana collection for the player
+    /// </summary>
+    private void AddMana()
+    {
+        playerMana++;
+        Debug.Log("Player mana has increased by 1");
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //if we collide with an enemy trigger, respawn
@@ -188,12 +202,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Mana")
         {
-            PlayerMana playerMana = other.GetComponent<PlayerMana>();
-            if (playerMana != null)
-            {
-                playerMana.AddMana(manaAmount);
-             
-            }
+            AddMana();
             Debug.Log("Mana collected");
             Destroy(other.gameObject);
             // OnTriggerEnter
@@ -203,18 +212,51 @@ public class PlayerController : MonoBehaviour
         {
             Respawn();  
         }
+
+        if(other.gameObject.tag == "Echoes")
+        {
+            echoes++;
+            other.gameObject.SetActive(false);
+            Debug.Log("Collected an Echo");
+        }
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Door")
+        {
+            Debug.Log("collided with door");
+
+            if(echoes>= collision.transform.GetComponent<Keys>().echoesNeeded)
+            {
+                collision.gameObject.SetActive(false);
+                echoes-= collision.transform.GetComponent<Keys>().echoesNeeded;
+                Debug.Log("opened the door");
+            }
+            else
+            {
+                Debug.Log("not enough echoes");
+            }
+        }
+
+        if (collision.gameObject.tag == "Respawn")
+        {
+            Debug.Log("Hit checkpoint");
+            respawnPoint.position = transform.position ;
+            Debug.Log("Checkpoint saved");
+        }
     }
     /// <summary>
     /// controls damage done in playerhealth script 
     /// </summary>
     /// <param name="damage"></param>
- //   public void TakeDamage()
-   // {
-       // lives -= damage;
-   //     Respawn();
+    //   public void TakeDamage()
+    // {
+    // lives -= damage;
+    //     Respawn();
 
-  //  }
+    //  }
     public int returnHealth()
     {
         return currentLives;

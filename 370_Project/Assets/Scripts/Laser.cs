@@ -26,5 +26,10 @@ public class Laser : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        /// added for collision with wall to destroy
+        if(other.gameObject.tag== "Floor")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

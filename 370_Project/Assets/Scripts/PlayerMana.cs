@@ -11,14 +11,10 @@ public class PlayerMana : MonoBehaviour
     public int currentMana = 0;
     // public TMP_Text manaText;
 
-    public void AddMana(int amount)
+    public void AddMana(int v)
     {
-        currentMana+= amount;
+        currentMana += 1;
        // UpdateManaUI();
     }
 
-    public int GetCurrentMana()
-    {
-        return currentMana;
-    }
 }

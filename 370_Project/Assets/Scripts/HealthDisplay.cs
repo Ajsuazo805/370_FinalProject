@@ -24,7 +24,8 @@ public class HealthDisplay : MonoBehaviour
 
         if (manaText != null)
         {
-            manaText.text = "Mana: " + playerMana.GetCurrentMana();
+          
+            manaText.text = "Mana: " + playerController.playerMana.ToString();
 
         }
     }
