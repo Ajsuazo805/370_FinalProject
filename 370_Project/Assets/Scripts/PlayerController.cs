@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
- * Author: [Suazo, Angel]
+ * Author: [Suazo, Angel; Gibson, Hannah ; Arteaga, Yasmine]
  * Last Updated: [10/17/2024]
  * [Movement for player script]
  */
