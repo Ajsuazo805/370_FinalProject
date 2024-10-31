@@ -45,9 +45,11 @@ public class PlayerController : MonoBehaviour
     private float lastSpawner = 0f;
     private float spawnDelay = 3f;
 
-    public float teleportDistance = 2f;
 
-    public bool canTeleport = true;
+    //WILL USE NEXT SPRINT
+    //public float teleportDistance = 2f;
+    //public bool canTeleport = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         HandleJumping();
-        Teleport();
         LaserSpawner();
     }
 
@@ -154,7 +155,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Teleport()
+    //WILL WORK ON THIS NEXT SPRINT
+    /*private void Teleport()
     {
         if (Input.GetKeyDown(KeyCode.T) && canTeleport)
         {
@@ -165,7 +167,7 @@ public class PlayerController : MonoBehaviour
 
             transform.position = newPos;
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {

@@ -18,4 +18,13 @@ public class Laser : MonoBehaviour
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag== "Enemy")
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }
