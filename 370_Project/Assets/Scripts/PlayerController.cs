@@ -11,6 +11,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // mouse sensitivity
+    public float mouseSen = 100f;
+
+
+    public float xRotate = 0f;
+
     //This will determine how many lives the player has
     public int lives = 3;
 
@@ -40,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform respawnPoint;
 
+    public Transform Player;
 
     private float lastSpawner = 0f;
     private float spawnDelay = 3f;
@@ -57,6 +64,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         //current health
         currentLives = lives;
         //set the startPos
@@ -73,6 +81,9 @@ public class PlayerController : MonoBehaviour
         Move();
         HandleJumping();
         LaserSpawner();
+        MouseMovement();
+
+        PlayerMoving();
     }
 
 
@@ -107,33 +118,34 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 forward = cameraTransform.forward;
-        forward.y = 0;
-        forward.Normalize();
+        ///took this off to work on new camera, seems to be working well
+       /// Vector3 forward = cameraTransform.forward;
+       // forward.y = 0;
+      //  forward.Normalize();
 
-        Vector3 right = cameraTransform.right;
-        right.y = 0;
-        right.Normalize();
+       // Vector3 right = cameraTransform.right;
+      //  right.y = 0;
+      //  right.Normalize();
 
         //player moves forward
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += forward * speed * Time.deltaTime;
+           // transform.position += forward * speed * Time.deltaTime;
         }
         ////player moves left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= right * speed * Time.deltaTime;
+            //transform.position -= right * speed * Time.deltaTime;
         }
         //player moves backwards
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= forward * speed * Time.deltaTime;
+           // transform.position -= forward * speed * Time.deltaTime;
         }
         //player moves right
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += right * speed * Time.deltaTime;
+            //transform.position += right * speed * Time.deltaTime;
         }
     }
 
@@ -175,12 +187,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// handles mana collection for the player
     /// </summary>
-    private void AddMana()
-    {
-        playerMana++;
-        Debug.Log("Player mana has increased by 1");
+   // private void AddMana()
+  //  {
+     //   playerMana++;
+    //    Debug.Log("Player mana has increased by 1");
 
-    }
+  //  }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -201,7 +213,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Mana")
         {
-            AddMana();
+            // AddMana();
+            playerMana++;
             Debug.Log("Mana collected");
             Destroy(other.gameObject);
             // OnTriggerEnter
@@ -259,5 +272,28 @@ public class PlayerController : MonoBehaviour
     public int returnHealth()
     {
         return currentLives;
+    }
+
+    private void MouseMovement()
+    {
+        // Mouse look
+        float mouseX = Input.GetAxis("Mouse X") * mouseSen * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSen * Time.deltaTime;
+
+        xRotate -= mouseY;
+        xRotate = Mathf.Clamp(xRotate, -90f, 90f);  // Limits vertical rotation
+
+        Player.localRotation = Quaternion.Euler(xRotate, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
+    }
+
+    private void PlayerMoving()
+    {
+        
+        float horizontal = Input.GetAxis("Horizontal");  // A, D or Left, Right
+        float vertical = Input.GetAxis("Vertical");      // W, S or Up, Down
+
+        Vector3 move = transform.right * horizontal + transform.forward * vertical;
+        transform.Translate(move * speed * Time.deltaTime, Space.World);
     }
 }
