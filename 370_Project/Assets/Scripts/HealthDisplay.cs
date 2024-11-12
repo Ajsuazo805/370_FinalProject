@@ -9,7 +9,10 @@ public class HealthDisplay : MonoBehaviour
     //public PlayerHealth playerHealth;
     public TMP_Text healthText;
     public TMP_Text manaText;
+    public TMP_Text echoesText;
     public PlayerMana playerMana;
+    public PlayerController playerEchoes;
+
 
     // Update is called once per frame
     void Update()
@@ -25,6 +28,13 @@ public class HealthDisplay : MonoBehaviour
         {
           
             manaText.text = "Mana: " + playerController.playerMana.ToString();
+
+        }
+
+        if (playerEchoes != null)
+        {
+
+            echoesText.text = "Echoes: " + playerController.playerEchoes.ToString();
 
         }
     }

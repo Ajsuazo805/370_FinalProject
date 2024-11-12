@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private float lastSpawner = 0f;
     private float spawnDelay = 3f;
 
-    public int echoes = 0;
+    public int playerEchoes;
 
     public int playerMana;
 
@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
         if(other.gameObject.tag == "Echoes")
         {
-            echoes++;
+            playerEchoes++;
             other.gameObject.SetActive(false);
             Debug.Log("Collected an Echo");
         }
@@ -240,10 +240,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("collided with door");
 
-            if(echoes>= collision.transform.GetComponent<Keys>().echoesNeeded)
+            if(playerEchoes>= collision.transform.GetComponent<Keys>().echoesNeeded)
             {
                 collision.gameObject.SetActive(false);
-                echoes-= collision.transform.GetComponent<Keys>().echoesNeeded;
+                playerEchoes-= collision.transform.GetComponent<Keys>().echoesNeeded;
                 Debug.Log("opened the door");
             }
             else
