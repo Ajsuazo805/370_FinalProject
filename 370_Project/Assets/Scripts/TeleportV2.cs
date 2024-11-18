@@ -35,8 +35,9 @@ public class TeleportV2 : MonoBehaviour
             {
                 if (playerController.playerMana >= manaRequired)
                 {
-                    gameObject.transform.position = Teleport.transform.position;
-                    Debug.Log("teleport Successful");
+                Vector3 teleportPosition = new Vector3(Teleport.transform.position.x, Teleport.transform.position.y, Teleport.transform.position.z);
+                    gameObject.transform.position = teleportPosition;
+                             Debug.Log("teleport Successful");
                 playerController.playerMana--;
                 }
                

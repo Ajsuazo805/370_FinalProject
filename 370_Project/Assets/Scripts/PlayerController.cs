@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     public int playerMana;
 
 
+    public GameObject manaPrefab;
+
+    private bool manaPrefabInstantiated = false;
+
     //WILL USE NEXT SPRINT
     //public float teleportDistance = 2f;
     //public bool canTeleport = true;
@@ -217,6 +221,13 @@ public class PlayerController : MonoBehaviour
             playerMana++;
             Debug.Log("Mana collected");
             Destroy(other.gameObject);
+           // if(playerMana>0 && !manaPrefabInstantiated)
+            
+
+            //    Instantiate(manaPrefab, transform.position, Quaternion.identity);
+              //  manaPrefabInstantiated = true;
+            //}
+            
             // OnTriggerEnter
         }
 
