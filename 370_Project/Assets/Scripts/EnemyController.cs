@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,16 +12,24 @@ public class EnemyController : MonoBehaviour
 
     private Transform target;
 
+    public float distance;
+    public Transform Player;
+    public NavMeshAgent navMeshAgent;
+
     private void Start()
     {
         //Detects Player Position
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void Update()
     {
-        //Moves towards detected position
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        distance = Vector3.Distance(this.transform.position, Player.position);
+
+        if (distance < 10)
+        {
+            navMeshAgent.destination = Player.position;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
