@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     {
         distance = Vector3.Distance(this.transform.position, Player.position);
 
-        if (distance < 10)
+        if (distance < 15)
         {
             navMeshAgent.destination = Player.position;
         }
