@@ -18,11 +18,17 @@ public class PlatFront : MonoBehaviour
     //the direction it is going 
     public bool goingBack;
 
+    private Rigidbody playerRigidbody;
+
+    private bool playerOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
         backPos = backPoint.transform.position;
         frontPos = frontPoint.transform.position;
+
+        playerRigidbody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -60,6 +66,32 @@ public class PlatFront : MonoBehaviour
                 //translate the platform forward by speed using Time.deltaTime
                 transform.position += Vector3.forward * speed * Time.deltaTime;
             }
+        }
+        if (playerOn)
+        {
+            MovePlayer();
+        }
+    }
+    private void MovePlayer()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.MovePosition(playerRigidbody.position + (transform.position - transform.position) * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOn = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOn = false;
         }
     }
 }
