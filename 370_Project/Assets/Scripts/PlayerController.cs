@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject manaPrefab;
 
+    public GameObject Plat1;
+
     private bool manaPrefabInstantiated = false;
 
     //WILL USE NEXT SPRINT
@@ -82,7 +84,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         HandleJumping();
         LaserSpawner();
         MouseMovement();
@@ -120,39 +121,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Move()
-    {
-        ///took this off to work on new camera, seems to be working well
-       /// Vector3 forward = cameraTransform.forward;
-       // forward.y = 0;
-      //  forward.Normalize();
-
-       // Vector3 right = cameraTransform.right;
-      //  right.y = 0;
-      //  right.Normalize();
-
-        //player moves forward
-        if (Input.GetKey(KeyCode.W))
-        {
-           // transform.position += forward * speed * Time.deltaTime;
-        }
-        ////player moves left
-        if (Input.GetKey(KeyCode.A))
-        {
-            //transform.position -= right * speed * Time.deltaTime;
-        }
-        //player moves backwards
-        if (Input.GetKey(KeyCode.S))
-        {
-           // transform.position -= forward * speed * Time.deltaTime;
-        }
-        //player moves right
-        if (Input.GetKey(KeyCode.D))
-        {
-            //transform.position += right * speed * Time.deltaTime;
-        }
-    }
-
     private void HandleJumping()
     {
         //Handles jumping 
@@ -173,20 +141,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    //WILL WORK ON THIS NEXT SPRINT
-    /*private void Teleport()
-    {
-        if (Input.GetKeyDown(KeyCode.T) && canTeleport)
-        {
-            startPos = transform.position;
-            Vector3 forwardDirection = cameraTransform.forward;
-
-            Vector3 newPos = startPos + forwardDirection * teleportDistance;
-
-            transform.position = newPos;
-        }
-    }*/
 
     /// <summary>
     /// handles mana collection for the player
@@ -242,7 +196,6 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             Debug.Log("Collected an Echo");
         }
-        
     }
 
     private void OnCollisionEnter(Collision collision)

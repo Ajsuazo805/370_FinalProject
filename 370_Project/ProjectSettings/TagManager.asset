@@ -12,6 +12,7 @@ TagManager:
   - Girl
   - Door
   - Echoes
+  - Platform
   layers:
   - Default
   - TransparentFX
