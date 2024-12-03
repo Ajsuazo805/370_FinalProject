@@ -29,6 +29,7 @@ public class SwitchScenes : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void PauseGame()
@@ -36,6 +37,7 @@ public class SwitchScenes : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void SwitchScene(int sceneIndex)

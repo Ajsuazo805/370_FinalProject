@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour
         MouseMovement();
 
         PlayerMoving();
+
+        
     }
 
 
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player is Dead");
             
             SceneManager.LoadScene(3);
+            Cursor.lockState = CursorLockMode.None;
         }
 
         //UpdateHealthDisplay();
