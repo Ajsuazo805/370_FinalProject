@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
     private bool manaPrefabInstantiated = false;
 
+    public int maxMana = 10;
+
     //WILL USE NEXT SPRINT
     //public float teleportDistance = 2f;
     //public bool canTeleport = true;
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerMoving();
 
+        ManaRegen();
         
     }
 
@@ -262,5 +265,23 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         transform.Translate(move * speed * Time.deltaTime, Space.World);
+    }
+
+    private void ManaRegen()
+    {
+        if(playerMana<= 0)
+        {
+            StartCoroutine(RegenerateMana());
+        }
+    }
+
+    private IEnumerator RegenerateMana()
+    {
+        while(playerMana < maxMana) 
+        {
+            playerMana++; 
+            yield return new WaitForSeconds(5); ;
+        }
+        
     }
 }

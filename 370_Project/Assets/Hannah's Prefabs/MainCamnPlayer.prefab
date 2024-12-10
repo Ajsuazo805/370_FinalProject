@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089515856256080846}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6999998, z: 21.07}
+  m_LocalRotation: {x: -0.23366465, y: -0, z: -0, w: 0.9723173}
+  m_LocalPosition: {x: -0.59, y: 7.778901, z: 22.77648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3028755113857188129}
-  m_Father: {fileID: 7937357272074314879}
+  m_Father: {fileID: 7384825670351021922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3862958816986960645
 GameObject:
@@ -170,7 +170,8 @@ Transform:
   m_LocalPosition: {x: 0.59, y: 2.72, z: -2.754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5049961701170511882}
   m_Father: {fileID: 7937357272074314879}
   m_LocalEulerAnglesHint: {x: 27.026, y: 0, z: 0}
 --- !u!20 &187697268212954669
@@ -332,7 +333,7 @@ PrefabInstance:
     - target: {fileID: 1338525235259103629, guid: 08138b2c8a2e69b40903d5a0a252943c,
         type: 3}
       propertyPath: m_Name
-      value: Player 1
+      value: MainCamnPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 2194499769131049717, guid: 08138b2c8a2e69b40903d5a0a252943c,
         type: 3}
@@ -481,10 +482,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 7384825670351021922}
-    - targetCorrespondingSourceObject: {fileID: 7250891972554423272, guid: 08138b2c8a2e69b40903d5a0a252943c,
-        type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 5049961701170511882}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1338525235259103629, guid: 08138b2c8a2e69b40903d5a0a252943c,
         type: 3}
