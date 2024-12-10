@@ -11,7 +11,12 @@ PrefabInstance:
     - target: {fileID: 1735040530763466266, guid: 6e072b4b8282ad144866369c55438867,
         type: 3}
       propertyPath: m_Name
-      value: Player 1 Variant
+      value: Player V.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602766726771375548, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3028755113857188129, guid: 6e072b4b8282ad144866369c55438867,
         type: 3}
@@ -43,6 +48,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9944983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.10475297
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384825670351021922, guid: 6e072b4b8282ad144866369c55438867,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 12.026
       objectReference: {fileID: 0}
     - target: {fileID: 7937357272074314879, guid: 6e072b4b8282ad144866369c55438867,
         type: 3}
@@ -95,7 +130,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6390433740419920053, guid: 6e072b4b8282ad144866369c55438867, type: 3}
+    - {fileID: 6265783267127370500, guid: 6e072b4b8282ad144866369c55438867, type: 3}
+    - {fileID: 2587864712604692298, guid: 6e072b4b8282ad144866369c55438867, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3862958816986960645, guid: 6e072b4b8282ad144866369c55438867,
