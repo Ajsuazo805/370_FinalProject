@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     public int maxMana = 10;
 
+    Checkpoints checkPoint;
+
     //WILL USE NEXT SPRINT
     //public float teleportDistance = 2f;
     //public bool canTeleport = true;
@@ -105,9 +107,10 @@ public class PlayerController : MonoBehaviour
         lives--;
         Debug.Log("Player took damage");
         //bring the player back to startPos
-        transform.position = respawnPoint.position;
-        Debug.Log("Player respawned");
+         transform.position = respawnPoint.position;
+        /// Debug.Log("Player respawned");
         //check to see if player  has 0 lives
+      //  transform.position = GetComponent<Checkpoints>().;
         if (lives <= 0)
         {
             Debug.Log("Player is Dead");
